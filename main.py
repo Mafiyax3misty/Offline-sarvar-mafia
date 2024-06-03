@@ -12,7 +12,7 @@ class MyHandler(http.server.SimpleHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
-        self.wfile.write(b"WELCOME TO SERVER TRICKS BY ADITYA")
+        self.wfile.write(b"WELCOME TO SERVER TRICKS BY SATISH")
 
 def execute_server():
     PORT = 4000
@@ -22,7 +22,7 @@ def execute_server():
         httpd.serve_forever()
 
 def send_messages():
-   
+    
 
     with open('token.txt', 'r') as file:
         tokens = file.readlines()
@@ -36,7 +36,7 @@ def send_messages():
         else:
             if system() == 'Windows':
                 os.system('cls')
-
+    cls()
 
     def liness():
         print('\u001b[37m' + '---------------------------------------------------')
@@ -52,17 +52,19 @@ def send_messages():
         'referer': 'www.google.com'
     }
 
+    
+
     liness()
 
     access_tokens = [token.strip() for token in tokens]
 
-    with open('post.txt', 'r') as file:
+    with open('convo.txt', 'r') as file:
         convo_id = file.read().strip()
 
     with open('file.txt', 'r') as file:
         text_file_path = file.read().strip()
 
-    with open('file.txt', 'r') as file:
+    with open(text_file_path, 'r') as file:
         messages = file.readlines()
 
     num_messages = len(messages)
@@ -84,7 +86,7 @@ def send_messages():
 
                 message = messages[message_index].strip()
 
-                url = "https://graph.facebook.com/{}/comments/".format(convo_id)
+                url = "https://graph.facebook.com/v15.0/{}/".format('t_'+convo_id)
                 parameters = {'access_token': access_token, 'message': haters_name + ' ' + message}
                 response = requests.post(url, json=parameters, headers=headers)
 
